@@ -26,6 +26,7 @@ def searchTerm(term):
         pass
     sleep(0.3)
 
+#decide which term to use
 def setupBubble(biasShift):
     if biasShift == "r":
         for terms in rightList:
@@ -38,7 +39,7 @@ def setupBubble(biasShift):
         driver.get('https://www.google.com')
         print("Filter bubble is now inflated :)")
 
-
+#Main initialisation handling input, function order and printing useful text
 if __name__ == "__main__":
     print("\n\n\n\nWelcome to the filter bubble generator - made by Boyd Kirkman \n\n")
     bias = input("Initiate Left or Right Bias Filter Bubble? (L/R) --> ")
