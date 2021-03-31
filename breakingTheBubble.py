@@ -47,4 +47,4 @@ if __name__ == "__main__":
     if bias == "l" or bias == "r":
         setupBubble(bias)
     else:
-        raise Exception("only 'L' and 'r' are accepted as valid inputs")
+        raise Exception("only 'L' and 'R' are accepted as valid inputs")
