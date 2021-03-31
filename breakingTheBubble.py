@@ -1,7 +1,7 @@
 #This code is open source and you can use it for whatever purposes you would like
 #please just at least acknowledge credit to me - Boyd Kirkman - 31/3/2021
 from selenium import webdriver
-from selenium.webdriver.common.keys import keys
+from selenium.webdriver.common.keys import Keys
 from time import sleep
 import random
 
@@ -17,26 +17,27 @@ def searchTerm(term):
     driver.get('https://www.google.com')
     search_bar = driver.find_element_by_name('q')
     search_bar.send_keys(term)
-    search_bar.send_keys(keys.return)
+    search_bar.send_keys(Keys.RETURN)
     sleep(0.01)
-    results = driver.find_elements_by_xpath('//div[@class="r"]/a/h3')  # finds webresults
-    results[0].click(). # clicks the first one
+    results = driver.find_element_by_id('rso').find_elements_by_xpath('/*')
+    results.click()
+    sleep(0.1)
 
 def setupBubble(biasShift):
     if biasShift == "r":
-        for x in rightList:
-            searchTerm(rightList[x])
+        for terms in rightList:
+            searchTerm(terms)
         driver.get('https://www.google.com')
         print("Filter bubble is now inflated :)")
     if biasShift == "l":
-        for y in leftList:
-            searchTerm(leftList[y])
+        for terms in leftList:
+            searchTerm(terms)
         driver.get('https://www.google.com')
         print("Filter bubble is now inflated :)")
 
 
 if __name__ == "__main__":
-    Print("Welcome to the filter bubble generator - made by Boyd Kirkman \n\n")
+    print("Welcome to the filter bubble generator - made by Boyd Kirkman \n\n")
     bias = input("Initiate Left or Right Bias Filter Bubble? (L/R) --> ")
     bias = bias.lower()
     if bias == "l" or bias == "r":
