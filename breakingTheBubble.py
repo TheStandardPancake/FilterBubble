@@ -19,16 +19,19 @@ def searchTerm(term):
     search_bar.send_keys(term)
     search_bar.send_keys(Keys.RETURN)
     sleep(0.01)
-    results = driver.find_element_by_id('rso').find_elements_by_xpath('/*')
-    results.click()
-    sleep(0.1)
+    try:
+        results = driver.find_element_by_xpath('//*[@id="rso"]/div[1]/div/div/div[1]/a/h3')
+        results.click()
+    except:
+        pass
+    sleep(0.3)
 
 def setupBubble(biasShift):
     if biasShift == "r":
         for terms in rightList:
             searchTerm(terms)
         driver.get('https://www.google.com')
-        print("Filter bubble is now inflated :)")
+        print("\n\nFilter bubble is now inflated :)\n\n")
     if biasShift == "l":
         for terms in leftList:
             searchTerm(terms)
@@ -37,7 +40,7 @@ def setupBubble(biasShift):
 
 
 if __name__ == "__main__":
-    print("Welcome to the filter bubble generator - made by Boyd Kirkman \n\n")
+    print("\n\n\n\nWelcome to the filter bubble generator - made by Boyd Kirkman \n\n")
     bias = input("Initiate Left or Right Bias Filter Bubble? (L/R) --> ")
     bias = bias.lower()
     if bias == "l" or bias == "r":
